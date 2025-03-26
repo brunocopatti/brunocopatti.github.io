@@ -1,5 +1,23 @@
 {
     "translation": {
-        "key": "chave"
+        "About": "Sobre",
+        "Skills": "Habilidades",
+        "Experience": "Experiência",
+        "Projects": "Projetos",
+        "Contact": "Contato",
+        "About me": "Sobre mim",
+        "Contact me": "Me contate",
+        "Made by": "Feito por",
+        "greetings": "Olá, eu sou o {{name}}!",
+        "about_description": "Eu sou um desenvolvedor full-stack brasileiro. Gosto muito de aprender novas técnologias e resolver problemas do dia-a-dia. Atualmente estou procurando uma primeira oportunidade de emprego ou algum projeto de seu interesse, sinta-se livre para me contatar!",
+        "Touch to read about it!": "Toque para ler sobre!",
+        "Software development intern": "Estágio em desenvolvimento de software",
+        "wishbox_description": "Administrei sistemas Linux e descobri uma maneira melhor de organizar repositórios Git através de links simbólicos. Também desenvolvi uma interface gráfica em Python, macros em Jinja para impressoras 3D, scripts em bash, e ajudei com o desenvolvimento de mais softwares.",
+        "teleport_description": "Aplicação full-stack onde usuários podem encurtar URLs.",
+        "portfolio_description": "Esse portfólio! Recursivo, né?",
+        "Source code": "Código fonte",
+        "Live": "Ativo",
+        "contact_description": "Sinta-se livre para compartilhar idéias que você gostaria de ver nascendo, e vamos construir ela juntos.",
+        "Mail me": "Me envie um e-mail"
     }
 }

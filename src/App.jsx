@@ -189,6 +189,10 @@ function App() {
       </section>
       <footer>
         <p>{t("Made by")} <a href="https://brunocopatti.github.io">Bruno Copatti</a></p>
+        <ul>
+          <li><a href="https://github.com/brunocopatti">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/brunocopatti/">LinkedIn</a></li>
+        </ul>
       </footer>
     </div>
  );

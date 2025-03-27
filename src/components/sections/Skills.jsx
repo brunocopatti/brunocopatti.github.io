@@ -86,7 +86,7 @@ function Skills() {
         <ShowOnVisible>
           <div className="flex flex-col gap-6">
             <p className="not-lg:text-center">
-              {skillDescription || t("Touch to read about it!")}
+              {t(skillDescription || "Touch to read about it!")}
             </p>
             <div className="flex flex-wrap gap-3">
               {skills.map((skill) => {

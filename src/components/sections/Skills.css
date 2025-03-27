@@ -1,0 +1,12 @@
+.skill {
+	transition: transform 0.3s ease-out;
+}
+
+.skill:hover {
+	transform: translateY(-5px);
+}
+
+.skill.active {
+	z-index: 1;
+	transform: translateY(-15px);
+}

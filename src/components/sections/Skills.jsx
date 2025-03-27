@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import useIsVisible from "../../hooks/useIsVisible";
 import Icon from "../Icon";
+import "./Skills.css";
 
 const skills = [
 	{
@@ -73,9 +74,13 @@ const skills = [
 
 function Skills() {
 	const { t } = useTranslation();
-	const [skillDescription, setSkillDescription] = useState(null);
+	const [activeSkill, setActiveSkill] = useState(null);
 	const ref = useRef();
 	const isVisible = useIsVisible(ref);
+
+  const skillDescription = activeSkill ? (
+    skills.find((skill) => skill.name === activeSkill).description
+  ) : null;
 
 	return (
 		<section
@@ -90,11 +95,21 @@ function Skills() {
 				</p>
 				<ul className="flex flex-wrap gap-3">
 					{skills.map((skill) => {
-						const setDescription = () => {
-							setSkillDescription(skill.description);
+            const isActive = skill.name === activeSkill;
+						const setSkill = () => {
+							if (isActive) {
+                setActiveSkill(null);
+              } else {
+                setActiveSkill(skill.name);
+              }
 						}
+
 						return (
-							<li key={skill.name} className="hover:cursor-pointer" onClick={setDescription}>
+							<li
+                key={skill.name}
+                className={`hover:cursor-pointer skill ${isActive ? "active" : ""}`}
+                onClick={setSkill}
+              >
 								<span className="sr-only">{skill.name}</span>
 								<Icon name={skill.icon} />
 							</li>

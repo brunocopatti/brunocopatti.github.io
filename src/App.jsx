@@ -1,5 +1,6 @@
 import { Code, Copy, ExternalLink, FileUser } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import Nav from "./components/sections/Nav";
 import Icon from "./components/Icon";
 import { useState } from "react";
 
@@ -161,15 +162,9 @@ function App() {
         <button onClick={() => changeLanguage("en")}>en</button>
         <button onClick={() => changeLanguage("pt")}>pt</button>
       </div>
-      <nav>
-        <ul>
-          <li><a href="#about">{t("About")}</a></li>
-          <li><a href="#skills">{t("Skills")}</a></li>
-          <li><a href="#experience">{t("Experience")}</a></li>
-          <li><a href="#projects">{t("Projects")}</a></li>
-          <li><a href="#contact">{t("Contact")}</a></li>
-        </ul>
-      </nav>
+      <div className="max-w-5xl m-auto">
+        <Nav />
+      </div>
       <section id="about">
         <h2>{t("About me")}</h2>
         <h1>{t("greetings", { name: "Bruno"})}</h1>

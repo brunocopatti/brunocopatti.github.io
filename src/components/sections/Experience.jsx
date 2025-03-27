@@ -56,7 +56,7 @@ function Experience() {
 	return (
 			<section className="p-3" id="experience">
 				<h2 className="text-cyan-700 mb-1">{t("Experience")}</h2>
-				<ul>
+				<ul className="flex flex-col gap-2">
 					{experiences.map((experience) => (
 						<ShowOnVisible>
 							<li key={experience.company}>

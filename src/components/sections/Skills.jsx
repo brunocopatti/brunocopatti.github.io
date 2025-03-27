@@ -93,7 +93,7 @@ function Skills() {
 				<p className="not-lg:text-center">
 					{skillDescription || t("Touch to read about it!")}
 				</p>
-				<ul className="flex flex-wrap gap-3">
+				<div className="flex flex-wrap gap-3">
 					{skills.map((skill) => {
             const isActive = skill.name === activeSkill;
 						const setSkill = () => {
@@ -105,17 +105,17 @@ function Skills() {
 						}
 
 						return (
-							<li
+							<button
                 key={skill.name}
                 className={`hover:cursor-pointer skill ${isActive ? "active" : ""}`}
                 onClick={setSkill}
               >
 								<span className="sr-only">{skill.name}</span>
 								<Icon name={skill.icon} />
-							</li>
+							</button>
 						);
 					})}
-				</ul>
+				</div>
 			</div>
 		</section>
 	);

@@ -156,7 +156,7 @@ function App() {
  const [skillDescription, setSkillDescription] = useState(null);
  
  return (
-    <div>
+    <div className="bg-neutral-950 text-amber-50 text-xl font-(family-name:--font-poppins)">
       <div className="hidden">
         {language}
         <button onClick={() => changeLanguage("en")}>en</button>

@@ -1,4 +1,3 @@
-import { useTranslation } from "react-i18next";
 import Nav from "./components/sections/Nav";
 import About from "./components/sections/About";
 import Skills from "./components/sections/Skills";
@@ -7,16 +6,10 @@ import Projects from "./components/sections/Projects";
 import Contact from "./components/sections/Contact";
 import Footer from "./components/sections/Footer";
 
+
 function App() {
- const { i18n: {changeLanguage, language} } = useTranslation();
- 
  return (
     <div className="scroll-smooth min-h-screen bg-neutral-950 text-amber-50 text-xl font-(family-name:--font-poppins)">
-      <div>
-        {language}
-        <button onClick={() => changeLanguage("en")}>en</button>
-        <button onClick={() => changeLanguage("pt")}>pt</button>
-      </div>
       <div className="max-w-5xl m-auto">
         <Nav />
       </div>

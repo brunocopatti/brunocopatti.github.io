@@ -1,9 +1,9 @@
-import { useState } from "react";
-import { Code, Copy, ExternalLink, FileUser } from "lucide-react";
+import { Code, Copy, ExternalLink } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import Nav from "./components/sections/Nav";
 import Icon from "./components/Icon";
 import About from "./components/sections/About";
+import Skills from "./components/sections/Skills";
 
 function formatDateRange(start, finish, locales="en-US") {
   const startDate = new Date(start);
@@ -80,22 +80,6 @@ const tools = {
   }
 };
 
-const skills = [
-  "HTML",
-  "CSS",
-  "JavaScript",
-  "React",
-  "Tailwind CSS",
-  "Node.js",
-  "Express.js",
-  "Python",
-  "Git",
-  "Bash",
-  "Linux",
-  "MySQL",
-  "Figma"
-];
-
 const experiences = [
   {
     role: "Software development intern",
@@ -154,7 +138,6 @@ const contacts = [
 
 function App() {
  const { t, i18n: {changeLanguage, language} } = useTranslation();
- const [skillDescription, setSkillDescription] = useState(null);
  
  return (
     <div className="scroll-smooth min-h-screen bg-neutral-950 text-amber-50 text-xl font-(family-name:--font-poppins)">
@@ -169,27 +152,9 @@ function App() {
       <div className="max-w-5xl m-auto">
         <About />
       </div>
-      <section id="skills">
-        <h2>{t("Skills")}</h2>
-        <p>
-          {skillDescription || t("Touch to read about it!")}
-        </p>
-        <ul>
-          {skills.map((skill) => {
-            const tool = tools[skill];
-            const setDescription = () => {
-              setSkillDescription(tool.description);
-            }
-
-            return (
-              <li key={skill} className="hover:cursor-pointer" onClick={setDescription}>
-                <span className="sr-only">{skill}</span>
-                <Icon name={tool.icon} />
-              </li>
-            );
-          })}
-        </ul>
-      </section>
+      <div className="max-w-5xl m-auto">
+        <Skills />
+      </div>
       <section id="experience">
         <h2>{t("Experience")}</h2>
         <ul>

@@ -18,6 +18,20 @@
         "Source code": "Código fonte",
         "Live": "Ativo",
         "contact_description": "Sinta-se livre para compartilhar idéias que você gostaria de ver nascendo, e vamos construir ela juntos.",
-        "Mail me": "Me envie um e-mail"
+        "Mail me": "Me envie um e-mail",
+        "Copy to clipboard": "Copiar para área de transferência",
+        "The standard markup language for creating web pages.": "A linguagem de marcação padrão para criação de páginas web.",
+        "Stylesheet language used for designing web pages.": "Linguagem de estilos usada para projetar páginas web.",
+        "A versatile programming language for web development.": "Uma linguagem de programação versátil para desenvolvimento web.",
+        "A JavaScript library for building user interfaces.": "Uma biblioteca JavaScript para construção de interfaces de usuário.",
+        "A utility-first CSS framework for styling websites.": "Um framework CSS baseado em utilitários para estilizar sites.",
+        "A JavaScript runtime for building server-side applications.": "Um ambiente de execução JavaScript para criar aplicações no servidor.",
+        "A fast and minimalist web framework for Node.js.": "Um framework web rápido e minimalista para Node.js.",
+        "A powerful, high-level programming language.": "Uma linguagem de programação poderosa e de alto nível.",
+        "A version control system for tracking code changes.": "Um sistema de controle de versão para rastrear mudanças no código.",
+        "A command-line shell for Unix-based systems.": "Um shell de linha de comando para sistemas baseados em Unix.",
+        "An open-source operating system based on Unix.": "Um sistema operacional de código aberto baseado em Unix.",
+        "A popular relational database management system.": "Um sistema popular de gerenciamento de banco de dados relacional.",
+        "A web-based design and prototyping tool.": "Uma ferramenta de design e prototipagem baseada na web."
     }
 }

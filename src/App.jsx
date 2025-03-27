@@ -1,4 +1,7 @@
+import { Code, Copy, ExternalLink, FileUser } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import Icon from "./components/Icon";
+import { useState } from "react";
 
 function formatDateRange(start, finish, locales="en-US") {
   const startDate = new Date(start);
@@ -14,11 +17,66 @@ function formatDateRange(start, finish, locales="en-US") {
   return `${startStr} - ${finishStr} (${monthsDiff} months)`;
 }
 
-function copy(text) {
+function copyClipboard(text) {
   return () => {
     navigator.clipboard.writeText(text);
   }
 }
+
+const tools = {
+  "HTML": {
+    icon: "HTML",
+    description: "The standard markup language for creating web pages."
+  },
+  "CSS": {
+    icon: "CSS",
+    description: "Stylesheet language used for designing web pages."
+  },
+  "JavaScript": {
+    icon: "JavaScript",
+    description: "A versatile programming language for web development."
+  },
+  "React": {
+    icon: "React",
+    description: "A JavaScript library for building user interfaces."
+  },
+  "Tailwind CSS": {
+    icon: "TailwindCSS",
+    description: "A utility-first CSS framework for styling websites."
+  },
+  "Node.js": {
+    icon: "NodeJS",
+    description: "A JavaScript runtime for building server-side applications."
+  },
+  "Express.js": {
+    icon: "ExpressJS",
+    description: "A fast and minimalist web framework for Node.js."
+  },
+  "Python": {
+    icon: "Python",
+    description: "A powerful, high-level programming language."
+  },
+  "Git": {
+    icon: "Git",
+    description: "A version control system for tracking code changes."
+  },
+  "Bash": {
+    icon: "Bash",
+    description: "A command-line shell for Unix-based systems."
+  },
+  "Linux": {
+    icon: "Linux",
+    description: "An open-source operating system based on Unix."
+  },
+  "MySQL": {
+    icon: "MySQL",
+    description: "A popular relational database management system."
+  },
+  "Figma": {
+    icon: "Figma",
+    description: "A web-based design and prototyping tool."
+  }
+};
 
 const skills = [
   "HTML",
@@ -94,10 +152,11 @@ const contacts = [
 
 function App() {
  const { t, i18n: {changeLanguage, language} } = useTranslation();
+ const [skillDescription, setSkillDescription] = useState(null);
  
  return (
     <div>
-      <div>
+      <div className="hidden">
         {language}
         <button onClick={() => changeLanguage("en")}>en</button>
         <button onClick={() => changeLanguage("pt")}>pt</button>
@@ -115,19 +174,44 @@ function App() {
         <h2>{t("About me")}</h2>
         <h1>{t("greetings", { name: "Bruno"})}</h1>
         <p>{t("about_description")}</p>
-        <a href="">Curriculum vitae</a>
+        <a href="">
+          <FileUser />
+          Curriculum vitae
+        </a>
         <ul>
-          <li><a href="https://github.com/brunocopatti">GitHub</a></li>
-          <li><a href="https://www.linkedin.com/in/brunocopatti/">LinkedIn</a></li>
+          <li>
+            <a href="https://github.com/brunocopatti">
+              <Icon name="Github" />
+              <span className="sr-only">GitHub</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/brunocopatti/">
+              <Icon name="LinkedIn" />
+              <span className="sr-only">LinkedIn</span>
+            </a>
+          </li>
         </ul>
       </section>
       <section id="skills">
         <h2>{t("Skills")}</h2>
-        <p>{t("Touch to read about it!")}</p>
+        <p>
+          {skillDescription || t("Touch to read about it!")}
+        </p>
         <ul>
-          {skills.map((skill) => (
-            <li key={skill}>{skill}</li>
-          ))}
+          {skills.map((skill) => {
+            const tool = tools[skill];
+            const setDescription = () => {
+              setSkillDescription(tool.description);
+            }
+
+            return (
+              <li key={skill} className="hover:cursor-pointer" onClick={setDescription}>
+                <span className="sr-only">{skill}</span>
+                <Icon name={tool.icon} />
+              </li>
+            );
+          })}
         </ul>
       </section>
       <section id="experience">
@@ -144,7 +228,10 @@ function App() {
                 <p>{t(experience.description)}</p>
                 <ul>
                   {experience.tools.map((tool) => (
-                    <li key={tool}>{tool}</li>
+                    <li key={tool}>
+                      <span className="sr-only">{tool}</span>
+                      <Icon name={tools[tool].icon} />
+                    </li>
                   ))}
                 </ul>
               </div>
@@ -162,12 +249,25 @@ function App() {
               <p>{t(project.description)}</p>
               <ul>
                 {project.tools.map((tool) => (
-                  <li key={tool}>{tool}</li>
+                  <li key={tool}>
+                    <span className="sr-only">{tool}</span>
+                    <Icon name={tools[tool].icon} />
+                  </li>
                 ))}
               </ul>
               <ul>
-                <li><a href={project.git} target="_blank">{t("Source code")}</a></li>
-                <li><a href={project.live} target="_blank">{t("Live")}</a></li>
+                <li>
+                  <a href={project.git} target="_blank">
+                    <Code />
+                    {t("Source code")}
+                  </a>
+                </li>
+                <li>
+                  <a href={project.live} target="_blank">
+                    <ExternalLink />
+                    {t("Live")}
+                  </a>
+                </li>
               </ul>
             </div>
           </li>
@@ -180,7 +280,10 @@ function App() {
           {contacts.map((contact) => (
             <li key={contact}>
               <span>{contact}</span>
-              <button onClick={copy(contact)}>copy</button>
+              <button className="hover:cursor-pointer" onClick={copyClipboard(contact)}>
+                <Copy />
+                <span className="sr-only">{t("Copy to clipboard")}</span>
+              </button>
             </li>
           ))}
         </ul>
@@ -190,8 +293,18 @@ function App() {
       <footer>
         <p>{t("Made by")} <a href="https://brunocopatti.github.io">Bruno Copatti</a></p>
         <ul>
-          <li><a href="https://github.com/brunocopatti">GitHub</a></li>
-          <li><a href="https://www.linkedin.com/in/brunocopatti/">LinkedIn</a></li>
+          <li>
+            <a href="https://github.com/brunocopatti">
+              <Icon name="Github" />
+              <span className="sr-only">GitHub</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/brunocopatti/">
+              <Icon name="LinkedIn" />
+              <span className="sr-only">LinkedIn</span>
+            </a>
+          </li>
         </ul>
       </footer>
     </div>

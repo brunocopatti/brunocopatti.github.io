@@ -81,38 +81,38 @@ function Skills() {
   ) : null;
 
 	return (
-		<ShowOnVisible>
       <section className="p-3" id="skills">
         <h2 className="text-green-700 mb-1">{t("Skills")}</h2>
-        <div className="flex flex-col gap-6">
-          <p className="not-lg:text-center">
-            {skillDescription || t("Touch to read about it!")}
-          </p>
-          <div className="flex flex-wrap gap-3">
-            {skills.map((skill) => {
-                  const isActive = skill.name === activeSkill;
-              const setSkill = () => {
-                if (isActive) {
-                      setActiveSkill(null);
-                    } else {
-                      setActiveSkill(skill.name);
-                    }
-              }
-              return (
-                <button
-                      key={skill.name}
-                      className={`hover:cursor-pointer skill ${isActive ? "active" : ""}`}
-                      onClick={setSkill}
-                    >
-                  <span className="sr-only">{skill.name}</span>
-                  <Icon name={skill.icon} />
-                </button>
-              );
-            })}
+        <ShowOnVisible>
+          <div className="flex flex-col gap-6">
+            <p className="not-lg:text-center">
+              {skillDescription || t("Touch to read about it!")}
+            </p>
+            <div className="flex flex-wrap gap-3">
+              {skills.map((skill) => {
+                    const isActive = skill.name === activeSkill;
+                const setSkill = () => {
+                  if (isActive) {
+                        setActiveSkill(null);
+                      } else {
+                        setActiveSkill(skill.name);
+                      }
+                }
+                return (
+                  <button
+                        key={skill.name}
+                        className={`hover:cursor-pointer skill ${isActive ? "active" : ""}`}
+                        onClick={setSkill}
+                      >
+                    <span className="sr-only">{skill.name}</span>
+                    <Icon name={skill.icon} />
+                  </button>
+                );
+              })}
+            </div>
           </div>
-        </div>
+        </ShowOnVisible>
       </section>
-    </ShowOnVisible>
 	);
 }
 

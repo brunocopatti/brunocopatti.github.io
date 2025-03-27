@@ -3,6 +3,7 @@ import { Code, Copy, ExternalLink, FileUser } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import Nav from "./components/sections/Nav";
 import Icon from "./components/Icon";
+import About from "./components/sections/About";
 
 function formatDateRange(start, finish, locales="en-US") {
   const startDate = new Date(start);
@@ -156,7 +157,7 @@ function App() {
  const [skillDescription, setSkillDescription] = useState(null);
  
  return (
-    <div className="bg-neutral-950 text-amber-50 text-xl font-(family-name:--font-poppins)">
+    <div className="scroll-smooth min-h-screen bg-neutral-950 text-amber-50 text-xl font-(family-name:--font-poppins)">
       <div className="hidden">
         {language}
         <button onClick={() => changeLanguage("en")}>en</button>
@@ -165,29 +166,9 @@ function App() {
       <div className="max-w-5xl m-auto">
         <Nav />
       </div>
-      <section id="about">
-        <h2>{t("About me")}</h2>
-        <h1>{t("greetings", { name: "Bruno"})}</h1>
-        <p>{t("about_description")}</p>
-        <a href="">
-          <FileUser />
-          Curriculum vitae
-        </a>
-        <ul>
-          <li>
-            <a href="https://github.com/brunocopatti">
-              <Icon name="Github" />
-              <span className="sr-only">GitHub</span>
-            </a>
-          </li>
-          <li>
-            <a href="https://www.linkedin.com/in/brunocopatti/">
-              <Icon name="LinkedIn" />
-              <span className="sr-only">LinkedIn</span>
-            </a>
-          </li>
-        </ul>
-      </section>
+      <div className="max-w-5xl m-auto">
+        <About />
+      </div>
       <section id="skills">
         <h2>{t("Skills")}</h2>
         <p>

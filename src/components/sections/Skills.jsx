@@ -1,6 +1,6 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import useIsVisible from "../../hooks/useIsVisible";
+import ShowOnVisible from "../ShowOnVisible";
 import Icon from "../Icon";
 import "./Skills.css";
 
@@ -75,49 +75,44 @@ const skills = [
 function Skills() {
 	const { t } = useTranslation();
 	const [activeSkill, setActiveSkill] = useState(null);
-	const ref = useRef();
-	const isVisible = useIsVisible(ref);
 
   const skillDescription = activeSkill ? (
     skills.find((skill) => skill.name === activeSkill).description
   ) : null;
 
 	return (
-		<section
-			ref={ref}
-			className={`p-3 ${isVisible ? "load-element" : ""}`}
-			id="skills"
-		>
-			<h2 className="text-green-700 mb-1">{t("Skills")}</h2>
-			<div className="flex flex-col gap-6">
-				<p className="not-lg:text-center">
-					{skillDescription || t("Touch to read about it!")}
-				</p>
-				<div className="flex flex-wrap gap-3">
-					{skills.map((skill) => {
-            const isActive = skill.name === activeSkill;
-						const setSkill = () => {
-							if (isActive) {
-                setActiveSkill(null);
-              } else {
-                setActiveSkill(skill.name);
+		<ShowOnVisible>
+      <section id="skills">
+        <h2 className="text-green-700 mb-1">{t("Skills")}</h2>
+        <div className="flex flex-col gap-6">
+          <p className="not-lg:text-center">
+            {skillDescription || t("Touch to read about it!")}
+          </p>
+          <div className="flex flex-wrap gap-3">
+            {skills.map((skill) => {
+                  const isActive = skill.name === activeSkill;
+              const setSkill = () => {
+                if (isActive) {
+                      setActiveSkill(null);
+                    } else {
+                      setActiveSkill(skill.name);
+                    }
               }
-						}
-
-						return (
-							<button
-                key={skill.name}
-                className={`hover:cursor-pointer skill ${isActive ? "active" : ""}`}
-                onClick={setSkill}
-              >
-								<span className="sr-only">{skill.name}</span>
-								<Icon name={skill.icon} />
-							</button>
-						);
-					})}
-				</div>
-			</div>
-		</section>
+              return (
+                <button
+                      key={skill.name}
+                      className={`hover:cursor-pointer skill ${isActive ? "active" : ""}`}
+                      onClick={setSkill}
+                    >
+                  <span className="sr-only">{skill.name}</span>
+                  <Icon name={skill.icon} />
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+    </ShowOnVisible>
 	);
 }
 

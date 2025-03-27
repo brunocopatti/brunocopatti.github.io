@@ -1,7 +1,6 @@
-import { useRef } from "react";
 import { useTranslation } from "react-i18next";
+import ShowOnVisible from "../ShowOnVisible";
 import Icon from "../Icon";
-import useIsVisible from "../../hooks/useIsVisible";
 
 const experiences = [
   {
@@ -53,42 +52,38 @@ function DateRange({ start, finish }) {
 
 function Experience() {
 	const { t } = useTranslation();
-	const ref = useRef();
-	const isVisible = useIsVisible(ref);
 
 	return (
-		<section
-			ref={ref}
-			className={`${isVisible ? "load-element" : ""} p-3`}
-			id="experience"
-		>
-			<h2 className="text-cyan-700 mb-1">{t("Experience")}</h2>
-			<ul>
-				{experiences.map((experience) => (
-					<li key={experience.company}>
-						<div className="flex flex-col gap-3 p-2 border-2 border-dashed border-neutral-600 rounded-md">
-							<div className="flex not-lg:flex-col justify-between lg:items-center">
-								<h3 className="text-2xl">{t(experience.role)}</h3>
-								<DateRange
-									start={experience.start_date}
-									finish={experience.finish_date}
-								/>
+		<ShowOnVisible>
+			<section id="experience">
+				<h2 className="text-cyan-700 mb-1">{t("Experience")}</h2>
+				<ul>
+					{experiences.map((experience) => (
+						<li key={experience.company}>
+							<div className="flex flex-col gap-3 p-2 border-2 border-dashed border-neutral-600 rounded-md">
+								<div className="flex not-lg:flex-col justify-between lg:items-center">
+									<h3 className="text-2xl">{t(experience.role)}</h3>
+									<DateRange
+										start={experience.start_date}
+										finish={experience.finish_date}
+									/>
+								</div>
+								<h4 className="text-2xl text-amber-500 font-semibold">{experience.company}</h4>
+								<p>{t(experience.description)}</p>
+								<ul className="flex flex-wrap gap-3">
+									{experience.tools.map((tool) => (
+										<li key={tool}>
+											<span className="sr-only">{tool.name}</span>
+											<Icon name={tool.icon} />
+										</li>
+									))}
+								</ul>
 							</div>
-							<h4 className="text-2xl text-amber-500 font-semibold">{experience.company}</h4>
-							<p>{t(experience.description)}</p>
-							<ul className="flex flex-wrap gap-3">
-								{experience.tools.map((tool) => (
-									<li key={tool}>
-										<span className="sr-only">{tool.name}</span>
-										<Icon name={tool.icon} />
-									</li>
-								))}
-							</ul>
-						</div>
-					</li>
-				))}
-			</ul>
-		</section>
+						</li>
+					))}
+				</ul>
+			</section>
+		</ShowOnVisible>
 	)
 }
 

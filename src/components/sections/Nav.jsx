@@ -18,7 +18,7 @@ function Nav() {
 				</button>
 			</div>
 			<ul
-				className={`${menuOpen ? "flex flex-col" : "not-lg:sr-only"} lg:flex lg:flex-row lg:m-auto lg:gap-4 lg:w-fit items-center`}
+				className={`${menuOpen ? "flex flex-col" : "not-lg:sr-only"} lg:flex lg:flex-row lg:gap-4 lg:w-fit items-center`}
 			>
 				<li className="nav-item"><a href="#about">{t("About")}</a></li>
 				<li className="nav-item"><a href="#skills">{t("Skills")}</a></li>

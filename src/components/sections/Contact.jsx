@@ -32,34 +32,34 @@ function Contact() {
 
 	return (
 		<section className="p-3" id="contact">
-			<ShowOnVisible>
 				<h2 className="text-cyan-700 mb-1">{t("Contact me")}</h2>
-				<div className="flex flex-col gap-5">
-					<ul>
-						{contacts.map((contact) => (
-							<ShowOnVisible>
-								<li className="flex max-w-96 gap-3 justify-between items-center" key={contact}>
-									<a
-										className="flex-1 text-ellipsis overflow-hidden text-lg"
-										href={contact.link}
-									>
-										{contact.display}
-									</a>
-									<button className="hover:cursor-pointer" onClick={copyClipboard(contact.link)}>
-										<Copy />
-										<span className="sr-only">{t("Copy to clipboard")}</span>
-									</button>
-								</li>
-							</ShowOnVisible>
-						))}
-					</ul>
-					<p>{t("contact_description")}</p>
-					<a
-						className="py-4 px-8 w-fit border rounded-xl font-semibold bg-cyan-700 hover:bg-cyan-950"
-						href="mailto:ottonellicopattibruno@gmail.com"
-					>{t("Mail me")}</a>
-				</div>
-			</ShowOnVisible>
+				<ShowOnVisible>
+					<div className="flex flex-col gap-5">
+						<ul>
+							{contacts.map((contact) => (
+								<ShowOnVisible>
+									<li className="flex max-w-96 gap-3 justify-between items-center" key={contact}>
+										<a
+											className="flex-1 text-ellipsis overflow-hidden text-lg"
+											href={contact.link}
+										>
+											{contact.display}
+										</a>
+										<button className="hover:cursor-pointer" onClick={copyClipboard(contact.link)}>
+											<Copy />
+											<span className="sr-only">{t("Copy to clipboard")}</span>
+										</button>
+									</li>
+								</ShowOnVisible>
+							))}
+						</ul>
+						<p>{t("contact_description")}</p>
+						<a
+							className="py-4 px-8 w-fit border rounded-xl font-semibold bg-cyan-700 hover:bg-cyan-950"
+							href="mailto:ottonellicopattibruno@gmail.com"
+						>{t("Mail me")}</a>
+					</div>
+				</ShowOnVisible>
 		</section>
 	);
 }

@@ -55,7 +55,7 @@ function Experience() {
 
 	return (
 		<ShowOnVisible>
-			<section id="experience">
+			<section className="p-3" id="experience">
 				<h2 className="text-cyan-700 mb-1">{t("Experience")}</h2>
 				<ul>
 					{experiences.map((experience) => (

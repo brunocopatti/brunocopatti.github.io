@@ -82,7 +82,7 @@ function Skills() {
 
 	return (
 		<ShowOnVisible>
-      <section id="skills">
+      <section className="p-3" id="skills">
         <h2 className="text-green-700 mb-1">{t("Skills")}</h2>
         <div className="flex flex-col gap-6">
           <p className="not-lg:text-center">

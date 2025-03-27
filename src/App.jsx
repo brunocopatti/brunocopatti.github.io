@@ -4,20 +4,7 @@ import Nav from "./components/sections/Nav";
 import Icon from "./components/Icon";
 import About from "./components/sections/About";
 import Skills from "./components/sections/Skills";
-
-function formatDateRange(start, finish, locales="en-US") {
-  const startDate = new Date(start);
-  const finishDate = new Date(finish);
-
-  const formatter = new Intl.DateTimeFormat(locales, { month: "long", year: "numeric" });
-
-  const startStr = formatter.format(startDate);
-  const finishStr = formatter.format(finishDate);
-
-  const monthsDiff = (finishDate.getFullYear() - startDate.getFullYear()) * 12 + (finishDate.getMonth() - startDate.getMonth());
-
-  return `${startStr} - ${finishStr} (${monthsDiff} months)`;
-}
+import Experience from "./components/sections/Experience";
 
 function copyClipboard(text) {
   return () => {
@@ -80,22 +67,6 @@ const tools = {
   }
 };
 
-const experiences = [
-  {
-    role: "Software development intern",
-    company: "Wishbox Technologies",
-    start_date: "2024-08-02",
-    finish_date: "2025-02-02",
-    description: "wishbox_description",
-    tools: [
-      "Python",
-      "Git",
-      "Bash",
-      "Linux"
-    ]
-  }
-];
-
 const projects = [
   {
     name: "teleport",
@@ -155,31 +126,9 @@ function App() {
       <div className="max-w-5xl m-auto">
         <Skills />
       </div>
-      <section id="experience">
-        <h2>{t("Experience")}</h2>
-        <ul>
-          {experiences.map((experience) => (
-            <li key={experience.company}>
-              <div>
-                <div>
-                  <h3>{t(experience.role)}</h3>
-                  <p>{formatDateRange(experience.start_date, experience.finish_date, language)}</p>
-                </div>
-                <h4>{experience.company}</h4>
-                <p>{t(experience.description)}</p>
-                <ul>
-                  {experience.tools.map((tool) => (
-                    <li key={tool}>
-                      <span className="sr-only">{tool}</span>
-                      <Icon name={tools[tool].icon} />
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </section>
+      <div className="max-w-5xl m-auto">
+        <Experience />
+      </div>
       <section id="projects">
         <h2>{t("Projects")}</h2>
         <ul>

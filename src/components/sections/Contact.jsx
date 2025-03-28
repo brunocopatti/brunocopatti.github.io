@@ -55,7 +55,7 @@ function Contact() {
 						</ul>
 						<p>{t("contact_description")}</p>
 						<a
-							className="py-4 px-8 w-fit border rounded-xl font-semibold bg-cyan-700 hover:bg-cyan-950"
+							className="py-4 px-8 w-fit rounded-xl font-semibold text-amber-50 bg-cyan-700 hover:bg-cyan-800"
 							href="mailto:ottonellicopattibruno@gmail.com"
 						>{t("Mail me")}</a>
 					</div>

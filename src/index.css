@@ -5,6 +5,8 @@
 	--font-poppins: "Poppins", sans-serif;
 }
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @keyframes loadElement {
   0% {
     opacity: 0;

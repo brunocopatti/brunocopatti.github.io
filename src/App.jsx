@@ -9,7 +9,9 @@ import Footer from "./components/sections/Footer";
 
 function App() {
  return (
-    <div className="py-2 scroll-smooth min-h-screen bg-neutral-950 text-amber-50 text-xl font-(family-name:--font-poppins)">
+    <div
+      className="py-2 scroll-smooth min-h-screen transition-colors duration-200 bg-neutral-950 dark:bg-amber-50 text-amber-50 dark:text-neutral-950 text-xl font-(family-name:--font-poppins)"
+    >
       <div className="max-w-5xl m-auto">
         <Nav />
       </div>

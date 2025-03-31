@@ -4,8 +4,14 @@ import Profile from "../../assets/profile.jpeg";
 import ShowOnVisible from "../ShowOnVisible";
 import Icon from "../Icon";
 
+const resumeFiles = {
+	"pt": "/Currículo.pdf",
+	"en": "/Resume.pdf"
+}
+
 function About() {
-	const { t } = useTranslation();
+	const { t, i18n: {language} } = useTranslation();
+	const resumeFile = resumeFiles[language];
 
 	return (
 			<section className="p-3" id="about">
@@ -15,7 +21,7 @@ function About() {
 						<div className="flex flex-col gap-6 not-lg:items-center">
 							<h1 className="text-3xl">{t("greetings", { name: "Bruno"})}</h1>
 							<p className="not-lg:text-center">{t("about_description")}</p>
-							<a className="flex items-center gap-2" href="">
+							<a className="flex items-center gap-2" href={resumeFile}>
 								<FileUser />
 								<span className="underline text-lg">Curriculum vitae</span>
 							</a>
